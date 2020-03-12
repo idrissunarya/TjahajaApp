@@ -1,0 +1,19 @@
+{
+    "name": "myextentionpackvs",
+    "displayName": "MyExtentionPackVS",
+    "description": "extention pack manualy add by idris",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.43.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "extensionPack": [ 
+        "eamodio.gitlens",
+        "formulahendry.auto-close-tag",
+        "christian-kohler.path-intellisense",
+        "christian-kohler.npm-intellisense",
+        "mrmlnc.vscode-pugbeautify"
+    ]
+}
