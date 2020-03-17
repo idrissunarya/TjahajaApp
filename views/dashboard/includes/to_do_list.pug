@@ -1,0 +1,211 @@
+link(rel='stylesheet' href='plugins/daterangepicker/daterangepicker.css')
+
+.col-md-4
+  .card.card-warning.card-outline
+    .card-header
+      h3.card-title
+        i.ion.ion-clipboard.mr-1
+        |   To Do List
+      .card-tools
+        ul.pagination.pagination-sm
+          li.page-item
+            a.page-link(href='#') «
+          li.page-item
+            a.page-link(href='#') 1
+          li.page-item
+            a.page-link(href='#') 2
+          li.page-item
+            a.page-link(href='#') 3
+          li.page-item
+            a.page-link(href='#') »
+    // /.card-header
+    .card-body
+      ul.todo-list(data-widget='todo-list')
+        li
+          // drag handle
+          span.handle
+            i.fas.fa-ellipsis-v
+            i.fas.fa-ellipsis-v
+          // checkbox
+          .icheck-primary.d-inline.ml-2
+            input#todoCheck1(type='checkbox', value='', name='todo1')
+            label(for='todoCheck1')
+          // todo text
+          span.text Design a nice theme
+          // Emphasis label
+          small.badge.badge-danger
+            i.far.fa-clock
+            |  2 mins
+          // General tools such as edit or delete
+          .tools
+            i.fas.fa-edit
+            i.fas.fa-trash-o
+        li
+          span.handle
+            i.fas.fa-ellipsis-v
+            i.fas.fa-ellipsis-v
+          .icheck-primary.d-inline.ml-2
+            input#todoCheck2(type='checkbox', value='', name='todo2', checked='')
+            label(for='todoCheck2')
+          span.text Make the theme responsive
+          small.badge.badge-info
+            i.far.fa-clock
+            |  4 hours
+          .tools
+            i.fas.fa-edit
+            i.fas.fa-trash-o
+        li
+          span.handle
+            i.fas.fa-ellipsis-v
+            i.fas.fa-ellipsis-v
+          .icheck-primary.d-inline.ml-2
+            input#todoCheck3(type='checkbox', value='', name='todo3')
+            label(for='todoCheck3')
+          span.text Let theme shine like a star
+          small.badge.badge-warning
+            i.far.fa-clock
+            |  1 day
+          .tools
+            i.fas.fa-edit
+            i.fas.fa-trash-o
+        li
+          span.handle
+            i.fas.fa-ellipsis-v
+            i.fas.fa-ellipsis-v
+          .icheck-primary.d-inline.ml-2
+            input#todoCheck4(type='checkbox', value='', name='todo4')
+            label(for='todoCheck4')
+          span.text Let theme shine like a star
+          small.badge.badge-success
+            i.far.fa-clock
+            |  3 days
+          .tools
+            i.fas.fa-edit
+            i.fas.fa-trash-o
+        li
+          span.handle
+            i.fas.fa-ellipsis-v
+            i.fas.fa-ellipsis-v
+          .icheck-primary.d-inline.ml-2
+            input#todoCheck5(type='checkbox', value='', name='todo5')
+            label(for='todoCheck5')
+          span.text Check your messages and notifications
+          small.badge.badge-primary
+            i.far.fa-clock
+            |  1 week
+          .tools
+            i.fas.fa-edit
+            i.fas.fa-trash-o
+        li
+          span.handle
+            i.fas.fa-ellipsis-v
+            i.fas.fa-ellipsis-v
+          .icheck-primary.d-inline.ml-2
+            input#todoCheck6(type='checkbox', value='', name='todo6')
+            label(for='todoCheck6')
+          span.text Let theme shine like a star
+          small.badge.badge-secondary
+            i.far.fa-clock
+            |  1 month
+          .tools
+            i.fas.fa-edit
+            i.fas.fa-trash-o
+    // /.card-body
+    .card-footer.clearfix
+      button.btn.btn-info.float-right(type='button', data-toggle='modal', data-target='#formAddToDoList')
+        i.fas.fa-plus
+        |  Add item
+
+      #formAddToDoList.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5#ToDoModalLabel.modal-title Add Todo 
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              form
+                .form-group
+                  label(for='name') Name
+                  input#name.form-control(type='text', aria-describedby='todoHelp', placeholder='Enter Todo')
+                  small#todoHelp.form-text.text-muted You must input todo
+                .form-group
+                  label(for='exampleInputPassword1') Author
+                  input#author.form-control(type='text', placeholder='Author')
+                .form-group
+                  label Date range:
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.far.fa-calendar-alt
+                    input#reservation.form-control.float-right(type='text')
+
+            .modal-footer
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+              button.btn.btn-primary(type='button') Save changes
+
+script(src="plugins/moment/moment.min.js")
+script(src="plugins/daterangepicker/daterangepicker.js")
+
+script.
+  $(function () {
+  //Initialize Select2 Elements
+  $('.select2').select2()
+  //Initialize Select2 Elements
+  $('.select2bs4').select2({
+  theme: 'bootstrap4'
+  })
+  //Datemask dd/mm/yyyy
+  $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+  //Datemask2 mm/dd/yyyy
+  $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+  //Money Euro
+  $('[data-mask]').inputmask()
+  //Date range picker
+  $('#reservation').daterangepicker()
+  //Date range picker with time picker
+  $('#reservationtime').daterangepicker({
+  timePicker: true,
+  timePickerIncrement: 30,
+  locale: {
+  format: 'MM/DD/YYYY hh:mm A'
+  }
+  })
+  //Date range as a button
+  $('#daterange-btn').daterangepicker(
+  {
+  ranges   : {
+  'Today'       : [moment(), moment()],
+  'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+  'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+  'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+  'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+  'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+  },
+  startDate: moment().subtract(29, 'days'),
+  endDate  : moment()
+  },
+  function (start, end) {
+  $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+  }
+  )
+  //Timepicker
+  $('#timepicker').datetimepicker({
+  format: 'LT'
+  })
+  //Bootstrap Duallistbox
+  $('.duallistbox').bootstrapDualListbox()
+  //Colorpicker
+  $('.my-colorpicker1').colorpicker()
+  //color picker with addon
+  $('.my-colorpicker2').colorpicker()
+  $('.my-colorpicker2').on('colorpickerChange', function(event) {
+  $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+  });
+  $("input[data-bootstrap-switch]").each(function(){
+  $(this).bootstrapSwitch('state', $(this).prop('checked'));
+  });
+  })
+
+
+  

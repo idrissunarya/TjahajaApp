@@ -8,4 +8,13 @@ block main
     .content-wrapper
       include includes/breadcumb.pug
       include includes/content_4_cards.pug
-      include includes/content_monitoring.pug
+
+      section.content
+        .row
+          include includes/content_monitoring.pug
+          include includes/to_do_list.pug
+
+        .row
+          include includes/accardion.pug
+          include includes/member_list.pug
+          include includes/social_widget.pug

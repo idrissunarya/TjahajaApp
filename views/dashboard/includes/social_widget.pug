@@ -1,0 +1,65 @@
+.col-md-4
+  // Widget: user widget style 2
+  .card.card-widget.widget-user-2
+    // Add the bg color to the header using any of the bg-* classes
+    .widget-user-header.bg-warning
+      .widget-user-image
+        img.img-circle.elevation-2(src='dist/img/user7-128x128.jpg', alt='User Avatar')
+      // /.widget-user-image
+      h3.widget-user-username Nadia Carmichael
+      h5.widget-user-desc Lead Developer
+    .card-footer.p-0
+      ul.nav.flex-column
+        li.nav-item
+          a.nav-link(href='#')
+            | Projects 
+            span.float-right.badge.bg-primary 31
+        li.nav-item
+          a.nav-link(href='#')
+            | Tasks 
+            span.float-right.badge.bg-info 5
+        li.nav-item
+          a.nav-link(href='#')
+            | Completed Projects 
+            span.float-right.badge.bg-success 12
+        li.nav-item
+          a.nav-link(href='#')
+            | Followers 
+            span.float-right.badge.bg-danger 842
+  // /.widget-user
+
+  p.text-center
+    strong Goal Completion
+  .progress-group
+    | Add Products to Cart
+    span.float-right
+      b 160
+      | /200
+    .progress.progress-sm
+      .progress-bar.bg-primary(style='width: 80%')
+  // /.progress-group
+  .progress-group
+    | Complete Purchase
+    span.float-right
+      b 310
+      | /400
+    .progress.progress-sm
+      .progress-bar.bg-danger(style='width: 75%')
+  // /.progress-group
+  .progress-group
+    span.progress-text Visit Premium Page
+    span.float-right
+      b 480
+      | /800
+    .progress.progress-sm
+      .progress-bar.bg-success(style='width: 60%')
+  // /.progress-group
+  .progress-group
+    | Send Inquiries
+    span.float-right
+      b 250
+      | /500
+    .progress.progress-sm
+      .progress-bar.bg-warning(style='width: 50%')
+  // /.progress-group
+
