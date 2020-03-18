@@ -1,4 +1,6 @@
-link(rel='stylesheet' href='plugins/daterangepicker/daterangepicker.css')
+link(rel='stylesheet' href='dist/css/datepicker.min.css')
+link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css')
+
 
 .col-md-4
   .card.card-warning.card-outline
@@ -131,81 +133,66 @@ link(rel='stylesheet' href='plugins/daterangepicker/daterangepicker.css')
                   small#todoHelp.form-text.text-muted You must input todo
                 .form-group
                   label(for='exampleInputPassword1') Author
-                  input#author.form-control(type='text', placeholder='Author')
-                .form-group
-                  label Date range:
-                  .input-group
-                    .input-group-prepend
-                      span.input-group-text
-                        i.far.fa-calendar-alt
-                    input#reservation.form-control.float-right(type='text')
+                  input#author.form-control(type='text', aria-describedby='authorHelp', placeholder='Author')
+                  small#authorHelp.form-text.text-muted Only author registered in system
+                .form-row
+                  .col
+                    label Start Todo
+                      span.badge.badge-pill.badge-success.mx-2 &nbsp
+                    .input-group
+                      .input-group-prepend
+                        button#toggleStart.input-group-text(type='button')
+                          i.fa.fa-calendar-alt
+                      input#startTodo.form-control.float-right(type='text')
+
+                  .col
+                    label End Todo
+                      span.badge.badge-pill.badge-danger.mx-2 &nbsp
+                    .input-group
+                      .input-group-prepend
+                        button#toggleEnd.input-group-text(type='button')
+                          i.fa.fa-calendar-alt
+                      input#endTodo.form-control.float-right(type='text')
 
             .modal-footer
               button.btn.btn-secondary(type='button', data-dismiss='modal') Close
               button.btn.btn-primary(type='button') Save changes
 
-script(src="plugins/moment/moment.min.js")
-script(src="plugins/daterangepicker/daterangepicker.js")
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js')
 
-script.
-  $(function () {
-  //Initialize Select2 Elements
-  $('.select2').select2()
-  //Initialize Select2 Elements
-  $('.select2bs4').select2({
-  theme: 'bootstrap4'
+script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js')
+
+script(type='text/javascript').
+
+  //for Start date todo
+  $('#startTodo').datetimepicker({
+    timepicker: true,
+    datepicker: true,
+    format: 'Y-m-d H:i',
+    onShow: function(ct) {
+      this.setOptions({
+        maxDate: $('#endTodo').val() ? $('#endTodo').val() : false
+      })
+    }
   })
-  //Datemask dd/mm/yyyy
-  $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-  //Datemask2 mm/dd/yyyy
-  $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-  //Money Euro
-  $('[data-mask]').inputmask()
-  //Date range picker
-  $('#reservation').daterangepicker()
-  //Date range picker with time picker
-  $('#reservationtime').daterangepicker({
-  timePicker: true,
-  timePickerIncrement: 30,
-  locale: {
-  format: 'MM/DD/YYYY hh:mm A'
-  }
-  })
-  //Date range as a button
-  $('#daterange-btn').daterangepicker(
-  {
-  ranges   : {
-  'Today'       : [moment(), moment()],
-  'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-  'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-  'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-  'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-  'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-  },
-  startDate: moment().subtract(29, 'days'),
-  endDate  : moment()
-  },
-  function (start, end) {
-  $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-  }
-  )
-  //Timepicker
-  $('#timepicker').datetimepicker({
-  format: 'LT'
-  })
-  //Bootstrap Duallistbox
-  $('.duallistbox').bootstrapDualListbox()
-  //Colorpicker
-  $('.my-colorpicker1').colorpicker()
-  //color picker with addon
-  $('.my-colorpicker2').colorpicker()
-  $('.my-colorpicker2').on('colorpickerChange', function(event) {
-  $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+
+  $('#toggleStart').on('click', function() {
+    $('#startTodo').datetimepicker('toggle')
   });
-  $("input[data-bootstrap-switch]").each(function(){
-  $(this).bootstrapSwitch('state', $(this).prop('checked'));
-  });
+
+  // for End date todo
+  $('#endTodo').datetimepicker({
+    timepicker: true,
+    datepicker: true,
+    format: 'Y-m-d H:i',
+    onShow: function(ct) {
+      this.setOptions({
+        minDate: $('#startTodo').val() ? $('#endTodo').val() : false
+      })
+    }
   })
 
-
-  
+  $('#toggleEnd').on('click', function() {
+    $('#endTodo').datetimepicker('toggle')
+  })

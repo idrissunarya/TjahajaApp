@@ -2,9 +2,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mongoose = require('mongoose');
 
 // initialize our express app
 const app = express();
+
+// Connect MongoDB with mongoose
+mongoose.connect('mongodb://localhost:27017/TjahajaApp');
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
