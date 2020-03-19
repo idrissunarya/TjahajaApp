@@ -114,11 +114,11 @@ link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-dateti
             i.fas.fa-trash-o
     // /.card-body
     .card-footer.clearfix
-      button.btn.btn-info.float-right(type='button', data-toggle='modal', data-target='#formAddToDoList')
+      button.btn.btn-success.float-right(type='button', data-toggle='modal', data-target='#formAddToDoList')
         i.fas.fa-plus
         |  Add item
 
-      #formAddToDoList.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+      #formAddToDoList.modal.fade(method='POST', action='/dashboard/call-todo', tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
         .modal-dialog(role='document')
           .modal-content
             .modal-header
@@ -129,11 +129,11 @@ link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-dateti
               form
                 .form-group
                   label(for='name') Name
-                  input#name.form-control(type='text', aria-describedby='todoHelp', placeholder='Enter Todo')
+                  input#todo-name.form-control(type='text', aria-describedby='todoHelp', placeholder='Enter Todo')
                   small#todoHelp.form-text.text-muted You must input todo
                 .form-group
                   label(for='exampleInputPassword1') Author
-                  input#author.form-control(type='text', aria-describedby='authorHelp', placeholder='Author')
+                  input#todo-author.form-control(type='text', aria-describedby='authorHelp', placeholder='Author')
                   small#authorHelp.form-text.text-muted Only author registered in system
                 .form-row
                   .col
@@ -156,7 +156,7 @@ link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-dateti
 
             .modal-footer
               button.btn.btn-secondary(type='button', data-dismiss='modal') Close
-              button.btn.btn-primary(type='button') Save changes
+              button.btn.btn-success(type='submit') Save changes
 
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js')
 

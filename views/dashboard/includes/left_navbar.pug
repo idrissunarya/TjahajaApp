@@ -1,17 +1,17 @@
 // Main Sidebar Container
 aside.main-sidebar.sidebar-light-primary.elevation-4
   // Brand Logo
-  a.brand-link(href='index3.html')
-    img.brand-image.img-circle.elevation-3(src='#', alt='Tjahaja Kopi', style='opacity: .8')
-    span.brand-text.font-weight-light Tjahaja Kopi
+  a.brand-link(href='/dashboard')
+    img.brand-image.img-circle.elevation-3(src='images/logo/logo-tjahaja.png', alt='Tjahaja Kopi', style='opacity: .8')
+    span.brand-text.font-weight-light Store Coffee
   // Sidebar
   .sidebar
     // Sidebar user panel (optional)
     .user-panel.mt-3.pb-3.mb-3.d-flex
       .image
-        img.img-circle.elevation-2(src='#', alt='User Image')
+        img.img-circle.elevation-2(src='images/person_2.jpg', alt='User Image')
       .info
-        a.d-block(href='#') Alexander Pierce
+        a.d-block(href='#') Tukimin
     // Sidebar Menu
     nav.mt-2
       ul.nav.nav-pills.nav-sidebar.flex-column(data-widget='treeview', role='menu', data-accordion='false')
@@ -19,7 +19,7 @@ aside.main-sidebar.sidebar-light-primary.elevation-4
           Add icons to the links using the .nav-icon class
           with font-awesome or any other icon font library
         li.nav-item
-          a.nav-link.null(href="#")
+          a.nav-link.active(href="/dashboard")
             i.nav-icon.fas.fa-tachometer-alt
             p
               | Dashboard
@@ -32,7 +32,7 @@ aside.main-sidebar.sidebar-light-primary.elevation-4
               i.right.fas.fa-angle-left
           ul.nav.nav-treeview
             li.nav-item
-              a.nav-link(href='#')
+              a.nav-link(href='/dashboard/menu')
                 i.fas.fa-coffee.nav-icon
                 p Menu
                 span.badge.badge-warning.right 99
